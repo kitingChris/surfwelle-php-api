@@ -1,0 +1,29 @@
+version: '3.6'
+
+services:
+  surfwelle-php-api: 
+    image: php:7.4-cli
+    container_name: surfwelle-php-api
+    working_dir: /src/app
+    ports:
+      - 80:80
+    depends_on: 
+      - surfwelle-phpcomposer-install
+    volumes:
+      - ./:/src/app
+    command: "php -S 0.0.0.0:80"
+    healthcheck:
+      test: curl -sSf 'http://localhost/health' | grep '"status":"ok"' || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  surfwelle-phpcomposer-install:
+    image: composer/composer 
+    container_name: surfwelle-phpcomposer-install
+    user: "${UID}:${GID}"
+    working_dir: /src/app
+    volumes:
+      - ./:/src/app
+    command: install

@@ -1,0 +1,16 @@
+{
+    "name": "surfwelleaugsburg/api",
+    "description": "An api for surfwelleaugsburg",
+    "type": "project",
+    "require": {
+        "mikecao/flight": "^2.0"
+    },
+    "license": "MIT",
+    "autoload": {
+    },
+    "authors": [
+        {
+            "name": "Christian Ego"
+        }
+    ]
+}
