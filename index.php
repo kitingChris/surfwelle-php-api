@@ -18,7 +18,7 @@ Flight::map('error', function(\Throwable $ex){
                 "line" => $ex->getLine(),
                 "trace" => $ex->getTrace()
             )
-        ), $code = 500);
+        ), 500);
 });
 Flight::set('flight.log_errors', true);
 
